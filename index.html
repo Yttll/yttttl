@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.c {
+		    background-color: #000; 
+		    display: flex;
+		    justify-content: center; /* 水平居中 */
+		    align-items: center; /* 垂直居中 */
+		}
+		input {
+		 background-color: transparent;
+		  border: none; 
+		  text-align: right;
+		  color: #b0b0b0;
+		}
+	    .container {
+	        background-color: #000; 
+	        width: 100%; /* 设置宽度为100% */
+	        height: 100vh; /* 设置高度为视口高度 */
+	        display: flex;
+	        justify-content: center; /* 水平居中 */
+	        align-items: center; /* 垂直居中 */
+	    }
+	    .image {
+	        max-width: 100%; /* 图片宽度最大为容器宽度 */
+	        max-height: 100%; /* 图片高度最大为容器高度 */
+			margin: 10px;
+	    }
+		  .container1 {
+				position: relative;
+				background-color: #000; 
+		        width: 100%; /* 设置宽度为100% */
+		        height: 100vh; /* 设置高度为视口高度 */
+		        display: flex;
+		        justify-content: center; /* 水平居中 */
+		        align-items: center; /* 垂直居中 */
+		    }
+		    .button1 {
+				position: absolute;
+				right: 25%;
+				bottom: 25%;
+		        background-color: blue; 
+		        color: white; 
+		        padding: 20px 40px; /* 设置内边距 */
+		        border: none; /* 去除按钮边框 */
+		        border-radius: 20px; /* 设置按钮边框圆角 */
+		        cursor: pointer; /* 设置鼠标样式为手型 */
+		    }
+		    .image1 {
+				position: absolute;
+				left: 15%;
+				
+		        max-width: 70%; 
+		        max-height: 100%; /* 图片最大高度为容器高度 */
+		    }
+			.myModal {
+			  position: relative;
+			  border: 1px solid #000;
+			}
+		    .modal {
+		        display: none; /* 默认隐藏弹窗 */
+		        position: fixed;
+		        z-index: 1;
+		        left: 0;
+		        top: 0;
+		        width: 100%;
+		        height: 100%;
+		        overflow: auto;
+		        background-color: rgba(0, 0, 0, 0.7); /* 设置背景色为黑色，带透明度 */
+		    }
+		    .modal-content {
+		        margin: 25% auto;
+		        padding: 20px;
+		         background-color: #fefefe; 
+		        border-radius: 5px;
+		        max-width: 80%;
+		        text-align: center;
+		    }
+		    .modal img {
+		        max-width: 100%;
+		        max-height: 80vh;
+		        border-radius: 5px;
+		    }	
+			 .centered-text {
+			        text-align: center; /* 文字居中对齐 */
+					font-size: 36px;
+			        line-height: 80px; /* 文字行高为40px，使文字垂直居中 */
+			        height: 80px; /* 设置高度为40px */
+			    }
+		      .carousel-container {
+		          width: 100%; /* 设置轮播图容器宽度 */
+		          margin: 0 auto; /* 水平居中 */
+		          overflow: hidden; /* 隐藏溢出部分 */
+		          position: relative;
+		      }
+		  
+		      .carousel {
+		          display: flex; /* 设置轮播图为横向排列 */
+		          transition: transform 0.5s ease; /* 添加过渡效果 */
+		      }
+		  
+		      .carousel-item {
+		          flex: 0 0 100%; /* 设置每个轮播项宽度为容器的百分之百 */
+		      }
+		  
+		      .carousel img {
+		          width: 100%; /* 图片宽度100%填充轮播项 */
+		          display: block; /* 去除图片间隙 */
+		      }
+		  
+		      .carousel-btn {
+					position: absolute; /* 绝对定位 */
+		            top: 50%; /* 垂直居中 */
+		            transform: translateY(-50%); /* 垂直居中 */
+					
+		            cursor: pointer; /* 鼠标样式为手型 */
+		            padding: 10px; /* 设置按钮内边距 */
+		            background-color: rgba(255, 255, 255, 1); /* 设置按钮背景颜色，半透明 */
+		            border: none; /* 去除按钮边框 */
+		      }
+		  
+		      .prev-btn {
+		          left: 0; /* 左侧按钮 */
+		      }
+		  
+		      .next-btn {
+		          right: 0; /* 右侧按钮 */
+		      }
+			   .black-frame {
+			          background-color: black; 
+			          color: white; /* 设置文字颜色为白色 */
+			          padding: 20px; /* 设置内边距 */
+			          width: 99%; /* 设置框架宽度 */
+			          margin: auto /* 居中 */
+					 
+			      }
+			  
+			      .top-left-text {
+			          float: left; 
+					  font-size: 12px;
+					  text-align: right;
+			      }
+			  
+			      .top-right-text {
+			          float: right; 
+					  font-size: 12px;
+					  text-align: left;
+			      }
+			  
+			      
+			      .clearfix::after {
+			          content: "";
+			          clear: both;
+			          display: table;
+					  }
+				  .sidebar {
+				    width: 200px;
+				    height: 100vh;
+				    position: fixed;
+				    left: -200px;
+				    top: 0;
+				    background-color: #333;
+				    color: white;
+				    transition: left 0.3s;
+				  }
+				  .sidebar.active {
+				    left: 0;
+				  }
+				  .overlay {
+				    display: none;
+				    position: fixed;
+				    top: 0;
+				    left: 0;
+				    right: 0;
+				    bottom: 0;
+				    background-color: rgba(0, 0, 0, 0.5);
+				    transition: opacity 0.3s;
+				  }
+				  .overlay.active {
+				    display: block;
+				  }
+	</style>
+	<body>
+		
+		<div id="open-sidebar" class="c">
+			<img class="image" src="./image/_00.png" alt="Custom Image">
+		</div>
+		 <div class="container">
+			 
+		     <img class="image" src="./image/938569768fceefc41e36e0223731717c_53cad305dbcc2faa32b44a422e3f27d3_8_00.png" alt="Custom Image">
+		 </div>
+
+		 <div class="container">
+		     <img class="image" src="./image/205ee850aacfdae07a3a0c1129bd843b_b34895e00270acc34c4bcd6023e62ebd_8_00.png" alt="">
+		     <img class="image" src="./image/9aa0bbbabb2c50ffeecafabc5f8ba948_60c87ae7da7e60a0bd093ab4d337fcd2_8_00.png" alt="">
+		     <img class="image" src="./image/a6bfee77f21b645392e3061343556b15_0a474ae5706ebadd275fa2f2bdbf0d09_8_00.png" alt="">
+		 </div>
+		
+		<div style="font-size: 1.5em;" class="centered-text">Store</div>
+		
+		<div class="container1">
+			<img class="image1" src="./image/d25adf141f78525923ef12fa0b3cd3bf_7a7092720d4328b671b1f44e23fb5288_8_00.png" alt="Custom Image">
+			<button class="button1" onclick="openModal()">More</button>
+		</div>
+	
+		
+		<div class="carousel-container">
+			
+		    <button class="carousel-btn prev-btn" onclick="prevSlide()">❮</button>
+			
+		    <div class="carousel">
+		        <div class="carousel-item"><img src="./image/016d74fe1866206f8d38a791ca9e6b85_42ca915ad67c991220e6b1a1c6749ab5_8_00.png" alt="Image 1"></div>
+				<div class="carousel-item"><img src="./image/016d74fe1866206f8d38a791ca9e6b85_42ca915ad67c991220e6b1a1c6749ab5_8_00.png" alt="Image 1"></div>
+		        
+
+		      </div>
+			  
+		        <button class="carousel-btn next-btn" onclick="nextSlide()">❯</button>
+		    
+			</div>
+		
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<div position:"absolute" top:"10px" right: "10px" ><!-- &times; --></div>
+				<img class="close" onclick="closeModal()" src="./image/4b93a73d2a52be7fac2dd32cddc64ea0_e00fa1a8e1d52e5d53004daaf862a986_8_00.png" alt="Custom Image">
+			</div>
+			
+			</div>
+		</div>
+		
+		<div class="black-frame clearfix">
+		    <div class="top-left-text">&nbsp;&nbsp;&nbsp;&nbsp;MAY WE HELP YOU?</div>
+		    <div class="top-right-text">STORE LOCATOR&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>
+		<div class="black-frame clearfix">
+		    <div class="top-right-text">SIGN&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>
+		<div class="black-frame clearfix">
+		    <div class="top-right-text">
+				<input type="text" name="email" value="EMAIL">
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+		</div>
+		<div class="black-frame clearfix">
+		    <div class="top-right-text">LANGUAGE&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</div>	
+		<div class="black-frame clearfix">
+			<div class="top-left-text">&nbsp;&nbsp;&nbsp;&nbsp;SERVICES</div>
+		</div>
+			
+		<div id="sidebar" class="sidebar">
+		  Under development
+		</div>
+			
+		<div id="overlay" class="overlay"></div>
+		
+
+			
+		<script>
+		    function openModal() {
+		        document.getElementById('myModal').style.display = 'block';
+		    }
+		
+		    function closeModal() {
+		        document.getElementById('myModal').style.display = 'none';
+		    }
+			
+		    let currentIndex = 0;
+		
+		    function prevSlide() {
+		        if (currentIndex === 0) {
+		            currentIndex = document.querySelectorAll('.carousel-item').length - 1;
+		        } else {
+		            currentIndex--;
+		        }
+		        updateSlide();
+		    }
+		
+		    function nextSlide() {
+		        if (currentIndex === document.querySelectorAll('.carousel-item').length - 1) {
+		            currentIndex = 0;
+		        } else {
+		            currentIndex++;
+		        }
+		        updateSlide();
+		    }
+		
+		    function updateSlide() {
+		        const carousel = document.querySelector('.carousel');
+		        const slideWidth = document.querySelector('.carousel-item').offsetWidth;
+		        carousel.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+		    }
+			
+			
+			 document.getElementById('open-sidebar').addEventListener('click', function() {
+			    document.getElementById('sidebar').classList.add('active');
+			    document.getElementById('overlay').classList.add('active');
+			  });
+			 
+			  document.getElementById('overlay').addEventListener('click', function() {
+			    document.getElementById('sidebar').classList.remove('active');
+			    document.getElementById('overlay').classList.remove('active');
+			  });
+		</script>
+	</body>
+</html>
